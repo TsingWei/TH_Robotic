@@ -4,7 +4,7 @@
  * @Author: xingzhang.Wu
  * @Date: 2020-01-08 15:36:56
  * @LastEditors  : Qingmao Wei
- * @LastEditTime : 2020-01-15 16:30:55
+ * @LastEditTime : 2020-01-16 14:32:49
  */
 #ifndef OFFLINESEQUENCECONTROL_H
 #define OFFLINESEQUENCECONTROL_H
@@ -26,7 +26,8 @@ class OfflineSequenceControl : public QDialog
 
 public:
     explicit OfflineSequenceControl(QWidget *parent = nullptr);
-    
+    void deactivateAllMoveButtons();
+    void activateAllMoveButtons();
 
     ~OfflineSequenceControl();
 
@@ -40,12 +41,11 @@ private:
     QMap<QString,QString> actionModels;
     // QStringList actionModels;
     SequenceExcuteWorker *seqWorker;
-     
+    void readAssetDir(const QString &dirpath);
 
     void keyPressEvent(QKeyEvent *e) override;
     void movementPtrInit();
-    void deactivateAllMoveButtons();
-    void activateAllMoveButtons();
+    
     QStringList getFileNames(const QString &path);
     int UIWaitTask(move_ops mov);
     
@@ -62,11 +62,16 @@ private slots:
     void on_pauseButton_clicked();
     void on_playButton_clicked();
     void on_resetButton_clicked();
+    void on_openValveButton_clicked();
+    void on_resetActionButton_clicked();
     void runStatus(QString s);
     void stopStatus();
 
+    void transDirLine();
+
 public slots:
     void pausedWhenError();
+
 };
 
 #endif // OFFLINESEQUENCECONTROL_H

@@ -25,7 +25,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab1">
         <attribute name="title">
@@ -223,6 +223,9 @@
                   <property name="focusPolicy">
                    <enum>Qt::NoFocus</enum>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>Forward(↑)</string>
                   </property>
@@ -270,6 +273,9 @@
                   </property>
                   <property name="focusPolicy">
                    <enum>Qt::NoFocus</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Right(→)</string>
@@ -370,6 +376,12 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="resetButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>75</width>
@@ -380,12 +392,56 @@
              <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
-             <string>Reset</string>
+             <string> 电机初始化</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="openValveButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>打开电磁阀</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="resetActionButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string> 初始位置</string>
             </property>
            </widget>
           </item>
           <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="standButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>75</width>
@@ -402,6 +458,12 @@
           </item>
           <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="sitButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>75</width>

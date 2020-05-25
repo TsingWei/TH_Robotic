@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui qml quick gamepad network
+QT       += core gui qml quick gamepad network 3dextras
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = RobotControlSystem
 TEMPLATE = app
-CONFIG += release
+#CONFIG += release
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -26,8 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 OBJECTS_DIR += ./build
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+    armscene.cpp \
     datatransmission.cpp \
     globaldata.cpp \
     connectdialog.cpp \
@@ -55,13 +54,17 @@ SOURCES += \
     autocontrol.cpp \
     remotecontrol.cpp \
     dataserver.cpp \
-    tcpreadthread.cpp
+    tcpreadthread.cpp\
     offlinesequencecontrol.cpp\
-    sequence.cpp \
-    sequencetableview.cpp
+    sequence.cpp\
+    sequencetableview.cpp \
+    armcontrol.cpp \
+    armsyncworker.cpp\
+    main.cpp\
+    mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
+    armscene.h \
     datatransmission.h \
     globaldata.h \
     connectdialog.h \
@@ -95,10 +98,17 @@ HEADERS += \
     libs/gc/ecanvci.h \
     libs/cx/controlcan.h \
     libs/zlg/ControlCANZLG.h\
-    sequence.h \
-    sequencetableview.h
-    dataserver.h \
-    tcpreadthread.h
+    sequence.h\
+    sequencetableview.h\
+    dataserver.h\
+    tcpreadthread.h \
+    mycustomslider.h \
+    armcontrol.h \
+    armsyncworker.h \
+    kinemetics.h\
+    mainwindow.h\
+
+
 
 FORMS += \
         mainwindow.ui \
@@ -112,7 +122,8 @@ FORMS += \
     offlinecontrol.ui \
     singlejointcontrol.ui \
     receiveerror.ui \
-    offlinesequencecontrol.ui
+    offlinesequencecontrol.ui \
+    armcontrol.ui
 
 #target.path = ../
 #INSTALLS += target
@@ -123,8 +134,8 @@ win32: LIBS += -lDbgHelp
 #QMAKE_CFLAGS_RELEASE += -g
 #QMAKE_CXXFLAGS_RELEASE += -g
 #禁止优化
-QMAKE_CFLAGS_RELEASE -= -O2
-QMAKE_CXXFLAGS_RELEASE -= -O2
+#QMAKE_CFLAGS_RELEASE -= -O2
+#QMAKE_CXXFLAGS_RELEASE -= -O2
 #release在最后link时默认有"-s”参数，表示"Omit all symbol information from the output file"，因此要去掉该参数
 #QMAKE_LFLAGS_RELEASE -= -Wl,-s
 #QMAKE_LFLAGS_RELEASE += -Wl,-Map,RobotControlSystem.map
@@ -170,5 +181,9 @@ DEPENDPATH += $$PWD/libs/cx
 INCLUDEPATH += $$PWD/libs/zlg
 DEPENDPATH += $$PWD/libs/zlg
 
+INCLUDEPATH += $$PWD/libs/eigen
+
 RESOURCES += \
     robot.qrc
+#    logo.qrc
+RC_FILE = logo.rc

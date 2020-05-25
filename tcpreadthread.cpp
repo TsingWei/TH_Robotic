@@ -28,10 +28,11 @@ void TcpReadThread::run()
 
     //More processing can be done here.
     s.append(tcpSocket->readAll());
+    qDebug()<<s.data();
 
     //更新导航目标数据
     //TODO: 待完善协议
-    global->navigateData.x = 0;
-    global->navigateData.y = 0;
-    global->navigateData.z = 0;
+    // globalData->navigateData.x = 0;
+    // globalData->navigateData.y = 0;
+    // globalData->navigateData.z = 0;
 }

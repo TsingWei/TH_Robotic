@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/logo">
+        <file>robot.ico</file>
+    </qresource>
+</RCC>
